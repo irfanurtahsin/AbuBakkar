@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Visiting Card</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .card {
+            width: 360px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .cover {
+            background: linear-gradient(to right, #4267B2, #365899);
+            height: 100px;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 5px solid #ffffff;
+            position: absolute;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333333;
+        }
+
+        .header p {
+            margin: 5px 0;
+            color: #666666;
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .contact-icons a {
+            text-decoration: none;
+            color: #4267B2;
+            text-align: center;
+        }
+
+        .contact-icons img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .about {
+            padding: 20px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+
+        .save-contact {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .save-contact button {
+            background-color: #4267B2;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .save-contact button:hover {
+            background-color: #365899;
+        }
+
+        .footer {
+            background: linear-gradient(to right, #4267B2, #ffffff);
+            color: #666666;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div class="cover"></div>
+    <img src="./Images/abu.png" alt="Profile Picture" class="profile-pic">
+
+    <div class="header">
+        <h1>Mohammed Abu Bakkar</h1>
+        <p>Businessman, Owner of an Electronic Shop</p>
+    </div>
+
+    <div class="contact-icons">
+        <a href="tel:+966505188034">
+            <img src="./Icons/call.png" alt="Call">
+            <p>Call</p>
+        </a>
+        <a href="https://wa.me/966505188034" target="_blank">
+            <img src="./Icons/whatsapp.png" alt="WhatsApp">
+            <p>WhatsApp</p>
+        </a>
+        <a href="mailto:bakkarhiram@gmail.com">
+            <img src="./Icons/mail.png" alt="Email">
+            <p>Email</p>
+        </a>
+    </div>
+
+    <div class="save-contact">
+        <button onclick="saveContact()">Save to Contact</button>
+    </div>
+
+    <div class="about">
+        <p>We provide the latest electronic gadgets and accessories to meet your needs. Visit us for quality products and excellent service.</p>
+    </div>
+
+    <div class="footer">
+        <p>Powered by Irfanur Tahsin</p>
+    </div>
+</div>
+
+<script>
+    function saveContact() {
+        const vCardData = `BEGIN:VCARD\nVERSION:3.0\nFN:Mohammed Abu Bakkar\nTEL:+966505188034\nEMAIL:bakkarhiram@gmail.com\nEND:VCARD`;
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Mohammed_Abu_Bakkar.vcf';
+        link.click();
+    }
+</script>
+
+</body>
+</html>
